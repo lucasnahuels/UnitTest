@@ -27,26 +27,39 @@ namespace ConsoleApp2
             //}
             //-----------------------------------------------------------------
             //second shot
-            bool IsLeapYearSecondShot(int year)
-            {
-                if (int.Parse(yearAsked) % 4 != 0 ||
-                    int.Parse(yearAsked) % 4 == 0 && int.Parse(yearAsked) % 100 == 0 && int.Parse(yearAsked) % 400 != 0)
-                {
-                    return false;
-                }
 
-                return true;
-            }
-
-
-            //third shot
-            bool IsLeapYearThirdShot(int year)
-            {
-                return (year % 4 == 0 && year % 100 != 0 || year % 400 == 0);
-            }
 
 
             //recordar hacer unit test
+        }
+
+
+    }
+
+
+    public static class Year
+    {
+        public static bool IsLeapYearSecondShot(int year)
+        {
+            if (year > 8000)
+            {
+                throw new ArgumentException("El numero debe ser menor a 8000");
+            }
+
+            if (year % 4 != 0 ||
+                year % 4 == 0 && year % 100 == 0 && year % 400 != 0)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+
+        //third shot
+        public static bool IsLeapYearThirdShot(int year)
+        {
+            return (year % 4 == 0 && year % 100 != 0 || year % 400 == 0);
         }
     }
 }
